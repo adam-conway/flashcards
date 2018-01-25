@@ -12,5 +12,3 @@ class Card
 end
 
 card = Card.new("What is the capital of Alaska?", "Juneau")
-puts card.question
-puts card.answer
