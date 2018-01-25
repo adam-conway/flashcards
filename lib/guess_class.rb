@@ -3,12 +3,10 @@ require './lib/card_class.rb'
 
 class Guess
   attr_accessor :response
-                :this_answer
 
   def initialize(response, current_card)
     @response = response
     @current_card = current_card
-    @this_answer = nil
   end
 
   def current_card
@@ -23,6 +21,14 @@ class Guess
     end
   end
 
+  def feedback
+    if correct?
+      return "Correct!"
+    else
+      return "Incorrect."
+    end
+  end
+
 end
 
-# binding.pry
+binding.pry
