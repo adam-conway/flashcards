@@ -2,19 +2,16 @@ require 'pry'
 require './lib/card_class.rb'
 
 class Guess
-  attr_accessor :response
+  attr_accessor :response,
+                :card
 
-  def initialize(response, current_card)
+  def initialize(response, card)
     @response = response
-    @current_card = current_card
-  end
-
-  def current_card
-    @current_card
+    @card = card
   end
 
   def correct?
-    if response == current_card.answer
+    if response == card.answer
       true
     else
       false
@@ -31,4 +28,4 @@ class Guess
 
 end
 
-binding.pry
+# binding.pry
