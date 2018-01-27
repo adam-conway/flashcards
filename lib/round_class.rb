@@ -30,10 +30,9 @@ class Round
     guesses.each do |i|
       if i.feedback == "Correct!"
         @total_correct += 1
-        binding.pry
       end
-    return @total_correct
     end
+    return @total_correct
   end
 
   def percent_correct
