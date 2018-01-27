@@ -9,6 +9,7 @@ class Round
   def initialize(deck)
     @deck = deck
     @user_guesses = []
+    @total_correct = 0
   end
 
   def guesses
@@ -29,6 +30,7 @@ class Round
     guesses.each do |i|
       if i.feedback == "Correct!"
         @total_correct += 1
+        binding.pry
       end
     return @total_correct
     end
@@ -42,4 +44,3 @@ class Round
 end
 
 # binding.pry
-#figuring out the answer of a card deck.cards[0].answer

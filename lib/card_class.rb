@@ -6,8 +6,8 @@ class Card
 
   def initialize(question,answer)
 
-    @question = question
-    @answer = answer
+    @question = question.to_s
+    @answer = answer.to_s
 
   end
 
