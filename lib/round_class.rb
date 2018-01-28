@@ -40,6 +40,30 @@ class Round
     right_answers = right_answers * 100
     return right_answers.to_i
   end
-end
 
-# binding.pry
+  def start
+    introduction
+    card_iteration
+    conclusion
+  end
+
+  def introduction
+    puts "Welcome! You're playing with #{deck.count} cards."
+    puts "--------------------------------------------------------"
+  end
+
+  def card_iteration
+    deck.cards.each do |ask_question|
+      puts "This is card #{guesses.length + 1} out of #{deck.count}"
+      puts "Question: #{deck.cards[guesses.length].question}"
+      guess = gets.chomp
+      record_guess(guess)
+      puts guesses.last.feedback
+    end
+  end
+
+  def conclusion
+    puts "****** Game over! ******"
+    puts "You had #{number_correct} correct guesses out of #{deck.count} for a score of #{percent_correct}%"
+  end
+end
