@@ -4,30 +4,27 @@ require './lib/card_class.rb'
 require './lib/guess_class.rb'
 
 class Round
-  attr_accessor :deck
+
+  attr_accessor :deck,
+                :user_guesses
 
   def initialize(deck)
     @deck = deck
     @user_guesses = []
-    @total_correct = 0
-  end
-
-  def guesses
-    @user_guesses
   end
 
   def current_card
-    deck.cards[guesses.length]
+    deck.cards[@user_guesses.length]
   end
 
   def record_guess(guess)
     guess = Guess.new(guess, current_card)
-    guesses << guess
+    @user_guesses << guess
   end
 
   def number_correct
     @total_correct = 0
-    guesses.each do |i|
+    @user_guesses.each do |i|
       if i.feedback == "Correct!"
         @total_correct += 1
       end
@@ -36,7 +33,8 @@ class Round
   end
 
   def percent_correct
-    right_answers = number_correct.to_f / guesses.length.to_f
+    #think about renaming
+    right_answers = number_correct.to_f / @user_guesses.length.to_f
     right_answers = right_answers * 100
     return right_answers.to_i
   end
@@ -54,16 +52,20 @@ class Round
 
   def card_iteration
     deck.cards.each do |ask_question|
-      puts "This is card #{guesses.length + 1} out of #{deck.count}"
-      puts "Question: #{deck.cards[guesses.length].question}"
-      guess = gets.chomp
+      puts "This is card #{@user_guesses.length + 1} out of #{deck.count}"
+      puts "Question: #{deck.cards[@user_guesses.length].question}"
+      guess = STDIN.gets.chomp
       record_guess(guess)
-      puts guesses.last.feedback
+      puts @user_guesses.last.feedback
     end
   end
 
   def conclusion
     puts "****** Game over! ******"
-    puts "You had #{number_correct} correct guesses out of #{deck.count} for a score of #{percent_correct}%"
+    #think about ways to keep the below less than 80 chars
+    #possibly puts a string on two lines
+    print "You had #{number_correct} correct guesses out of #{deck.count}"
+    puts " for a score of #{percent_correct}%"
   end
+
 end
