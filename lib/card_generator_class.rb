@@ -3,6 +3,7 @@ require './lib/deck_class.rb'
 require './lib/card_class.rb'
 
 class CardGenerator
+
   attr_accessor :cards
 
   def initialize(file)
@@ -13,5 +14,5 @@ class CardGenerator
       @cards << card
     end
   end
-
+  
 end

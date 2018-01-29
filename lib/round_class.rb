@@ -33,7 +33,6 @@ class Round
   end
 
   def percent_correct
-    #think about renaming
     right_answers = number_correct.to_f / @user_guesses.length.to_f
     right_answers = right_answers * 100
     return right_answers.to_i
@@ -62,10 +61,8 @@ class Round
 
   def conclusion
     puts "****** Game over! ******"
-    #think about ways to keep the below less than 80 chars
-    #possibly puts a string on two lines
     print "You had #{number_correct} correct guesses out of #{deck.count}"
     puts " for a score of #{percent_correct}%"
   end
-
+  
 end

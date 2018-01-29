@@ -2,6 +2,7 @@ require 'pry'
 require './lib/card_class.rb'
 
 class Deck
+
   attr_accessor :cards
 
   def initialize(cards)
@@ -11,4 +12,5 @@ class Deck
   def count
     cards.length
   end
+  
 end

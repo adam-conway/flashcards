@@ -11,5 +11,5 @@ class CardGeneratorTest < Minitest::Test
     assert_instance_of Card, list_of_cards[0]
     assert_equal list_of_cards.length, 4
   end
-
+  
 end

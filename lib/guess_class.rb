@@ -2,6 +2,7 @@ require 'pry'
 require './lib/card_class.rb'
 
 class Guess
+  
   attr_accessor :response,
                 :card
 
@@ -27,5 +28,3 @@ class Guess
   end
 
 end
-
-# binding.pry
